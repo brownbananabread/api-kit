@@ -1,0 +1,31 @@
+{
+  "name": "@lucent-technologies/api-kit",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "bun --watch src/server.ts",
+    "build": "bun build src/server.ts --outdir dist --target bun",
+    "start": "bun dist/server.js",
+    "check": "tsc --noEmit",
+    "lint": "biome check ./src",
+    "lint:fix": "biome check --fix ./src",
+    "format": "biome format --write ./src",
+    "test:unit": "bun test --env-file .env.local tests/unit",
+    "test:int": "bun test --env-file .env.local tests/int",
+    "test:api": "bun test --env-file .env.local tests/api",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "2.98.0",
+    "express": "5.1.0",
+    "zod": "4.3.6"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.4.6",
+    "@types/bun": "1.2.16",
+    "@types/express": "5.0.3",
+    "husky": "9.1.7",
+    "typescript": "5.9.3"
+  }
+}

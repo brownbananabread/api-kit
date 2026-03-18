@@ -1,14 +1,11 @@
 import type { Request, Response } from 'express';
 import { createRequestLogger, runWithLogger } from '@/lib/context';
 import { Logger } from '@/lib/logger';
-import {
-  joinWaitlistRequestBodySchema,
-  joinWaitlistResponseSchema,
-} from '@/schemas';
+import { joinWaitlistInput, joinWaitlistOutput } from '@/schemas';
 import type { WaitlistService } from '@/services/waitlist';
 import { parseJsonBody } from '@/utils/body';
 import { ApiResponse } from '@/utils/response';
-import { validateSchema } from '@/utils/validators';
+import { formatResponse, validateRequest } from '@/utils/validators';
 
 const log = new Logger('WaitlistController');
 const response = new ApiResponse();
@@ -32,9 +29,9 @@ export class WaitlistController {
     return runWithLogger(logger, async () => {
       try {
         const body = await parseJsonBody(req);
-        const entry = validateSchema(joinWaitlistRequestBodySchema, body);
+        const entry = validateRequest(joinWaitlistInput, body);
         const waitlist = await this.service.addToWaitlist(entry);
-        const data = validateSchema(joinWaitlistResponseSchema, waitlist);
+        const data = formatResponse(joinWaitlistOutput, waitlist);
 
         return response.sendSuccess(res, data, 201);
       } catch (err) {

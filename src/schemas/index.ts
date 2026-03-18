@@ -1,9 +1,9 @@
 export {
-  joinWaitlistRequestBodySchema,
-  joinWaitlistResponseSchema,
+  joinWaitlistInput,
+  joinWaitlistOutput,
   waitlistCountryCodeSchema,
+  waitlistEntity,
   waitlistFeatureSchema,
   waitlistGoalSchema,
   waitlistOperatingTimeSchema,
-  waitlistSchema,
 } from './waitlist';

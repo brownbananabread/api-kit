@@ -1,12 +1,12 @@
-import type { JoinWaitlistRequestBody, Waitlist } from '@/types';
+import type { JoinWaitlistInput, Waitlist } from '@/types';
 
 export interface Database {
   public: {
     Tables: {
       waitlist: {
         Row: Waitlist;
-        Insert: JoinWaitlistRequestBody;
-        Update: Partial<JoinWaitlistRequestBody>;
+        Insert: JoinWaitlistInput;
+        Update: Partial<JoinWaitlistInput>;
         Relationships: [];
       };
     };

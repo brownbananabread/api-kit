@@ -1,6 +1,6 @@
 export type {
-  JoinWaitlistRequestBody,
-  JoinWaitlistResponse,
+  JoinWaitlistInput,
+  JoinWaitlistOutput,
   Waitlist,
   WaitlistCountryCode,
   WaitlistFeature,

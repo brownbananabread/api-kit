@@ -34,7 +34,7 @@ export const waitlistCountryCodeSchema = z.enum([
   '+65',
 ]);
 
-export const waitlistSchema = z.object({
+export const waitlistEntity = z.object({
   id: z.number().int(),
   waitlist_token: z.string().uuid(),
   feature: waitlistFeatureSchema,
@@ -51,13 +51,13 @@ export const waitlistSchema = z.object({
   updated_at: z.string().datetime({ offset: true }),
 });
 
-export const joinWaitlistRequestBodySchema = waitlistSchema.omit({
+export const joinWaitlistInput = waitlistEntity.omit({
   id: true,
   waitlist_token: true,
   created_at: true,
   updated_at: true,
 });
 
-export const joinWaitlistResponseSchema = waitlistSchema.pick({
+export const joinWaitlistOutput = waitlistEntity.pick({
   waitlist_token: true,
 });

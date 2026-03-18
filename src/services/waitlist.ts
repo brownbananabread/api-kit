@@ -1,12 +1,12 @@
 import { getLogger } from '@/lib/context';
 import type { WaitlistRepository } from '@/repositories/waitlist';
-import type { JoinWaitlistRequestBody, Waitlist } from '@/types';
+import type { JoinWaitlistInput, Waitlist } from '@/types';
 import { Conflict } from '@/utils/errors';
 
 export class WaitlistService {
   constructor(private readonly waitlist: WaitlistRepository) {}
 
-  async addToWaitlist(entry: JoinWaitlistRequestBody): Promise<Waitlist> {
+  async addToWaitlist(entry: JoinWaitlistInput): Promise<Waitlist> {
     const log = getLogger();
 
     log.debug('Querying the database for existing email', {
